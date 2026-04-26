@@ -1751,6 +1751,101 @@
                padding-right: max(var(--container-padding), env(safe-area-inset-right));
            }
        }
+
+       /* ---------- Стили для кнопки автора и модального окна ---------- */
+       .footer-author-btn {
+           background: transparent;
+           border: 1px solid rgba(128,128,128,0.4);
+           color: var(--text-soft);
+           padding: 5px 14px;
+           border-radius: 20px;
+           cursor: pointer;
+           font-size: 0.85rem;
+           transition: all 0.2s;
+           margin: 0 5px;
+           display: inline-block;
+       }
+       .footer-author-btn:hover {
+           color: var(--chelny-blue);
+           border-color: var(--chelny-blue);
+           background: rgba(11,94,215,0.1);
+       }
+
+       /* Модальное окно (общее для нового окна) */
+       .modal {
+           display: none;
+           position: fixed;
+           inset: 0;
+           background: rgba(0,0,0,0.7);
+           backdrop-filter: blur(8px);
+           z-index: 5000;
+           align-items: center;
+           justify-content: center;
+           padding: 20px;
+       }
+       .modal-content {
+           background: var(--surface-strong);
+           border-radius: 28px;
+           max-width: 500px;
+           width: 100%;
+           padding: 28px 24px;
+           position: relative;
+           border: 1px solid var(--border-color);
+           box-shadow: var(--shadow-lg);
+           text-align: center;
+       }
+       .close-modal {
+           position: absolute;
+           top: 16px;
+           right: 20px;
+           font-size: 28px;
+           font-weight: bold;
+           cursor: pointer;
+           color: var(--text-soft);
+           transition: color 0.2s;
+       }
+       .close-modal:hover {
+           color: var(--chelny-red);
+       }
+       .cp-title {
+           font-size: 1.5rem;
+           font-weight: 800;
+           margin: 10px 0 5px;
+           color: var(--title-color);
+       }
+       .cp-desc {
+           color: var(--text-soft);
+           font-size: 0.95rem;
+           line-height: 1.5;
+           margin-bottom: 24px;
+       }
+       .social-grid {
+           display: flex;
+           justify-content: center;
+           gap: 12px;
+           flex-wrap: wrap;
+           margin: 20px 0 10px;
+       }
+       .soc-btn {
+           display: inline-flex;
+           align-items: center;
+           gap: 8px;
+           padding: 8px 20px;
+           border-radius: 40px;
+           text-decoration: none;
+           font-weight: 500;
+           font-size: 0.9rem;
+           transition: transform 0.2s, box-shadow 0.2s;
+           color: #fff !important;
+           background: #333;
+       }
+       .soc-btn.vk { background: #0077FF; }
+       .soc-btn.tg { background: #229ED9; }
+       .soc-btn.yt { background: #FF0000; }
+       .soc-btn:hover {
+           transform: translateY(-2px);
+           box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+       }
     </style>
 </head>
 <body>
@@ -1879,6 +1974,27 @@
         <! Полноэкранный режим видео >
         <div class="fullscreen-video" id="fullscreenVideo"><button class="close-fullscreen" onclick="exitFullscreenVideo()">×</button><div class="fullscreen-video-content" id="fullscreenVideoContent"></div></div>
 
+        <!-- Модальное окно автора -->
+        <div id="authorModal" class="modal" style="display: none;">
+            <div class="modal-content author-modal">
+                <span class="close-modal">&times;</span>
+                <h2>👨‍💻 Автор проекта</h2>
+                <p class="cp-title">© CayPlay, 2026</p>
+                <p class="cp-desc">Независимый образовательный проект о Набережных Челнах.<br>Все права защищены.</p>
+                <div class="social-grid">
+                    <a href="https://vk.com/ваш_id" target="_blank" rel="noopener" class="soc-btn vk">
+                        <i class="fab fa-vk"></i> VK
+                    </a>
+                    <a href="https://t.me/ваш_канал" target="_blank" rel="noopener" class="soc-btn tg">
+                        <i class="fab fa-telegram"></i> Telegram
+                    </a>
+                    <a href="https://youtube.com/@ваш_канал" target="_blank" rel="noopener" class="soc-btn yt">
+                        <i class="fab fa-youtube"></i> YouTube
+                    </a>
+                </div>
+            </div>
+        </div>
+
         <! Шапка >
         <div class="header-container">
             <div class="coat-of-arms"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Coat_of_Arms_of_Naberezhnye_Chelny_%28Tatarstan%29.svg/1280px-Coat_of_Arms_of_Naberezhnye_Chelny_%28Tatarstan%29.svg.png" alt="Герб Набережных Челнов" onerror="this.src='https://placehold.co/180x220/0054A6/FFFFFF/png?text=Герб+Челнов'"></div>
@@ -1904,7 +2020,7 @@
         <footer>
             <div class="footer-title">Набережные Челны - Город трудовой доблести</div>
             <p>© 2026 CayPlay Все права защищены</p>
-            <p>© 2026 Викторина, фототур и видео тур по городу</p>
+            <button id="authorBtn" class="footer-author-btn" title="Об авторе и правах">© CayPlay</button>
             <p>Исследуйте красоту родного города через призму знаний и мультимедиа!</p>
             <div class="score-display"><i class="fas fa-star"></i> Ваш лучший результат в викторине: <span id="bestScore">0</span> баллов</div>
             <div class="score-display" style="margin-top:10px;"><i class="fas fa-camera"></i> Исследовано локаций: <span id="locationsVisited">0</span></div>
@@ -2199,6 +2315,27 @@
             document.getElementById('helpBtn').onclick = openHelpModal;
             document.querySelectorAll('.edit-tab').forEach(tab => { tab.onclick = () => switchEditTab(tab.dataset.tab); });
             document.addEventListener('keydown', e => { if (e.key === 'F1') { e.preventDefault(); openHelpModal(); } });
+
+            // --- Код для кнопки автора и модального окна ---
+            const authorBtn = document.getElementById('authorBtn');
+            const authorModal = document.getElementById('authorModal');
+            if (authorBtn && authorModal) {
+                authorBtn.addEventListener('click', () => {
+                    authorModal.style.display = 'flex';
+                });
+                const closeModalBtn = authorModal.querySelector('.close-modal');
+                if (closeModalBtn) {
+                    closeModalBtn.addEventListener('click', () => {
+                        authorModal.style.display = 'none';
+                    });
+                }
+                authorModal.addEventListener('click', (e) => {
+                    if (e.target === authorModal) {
+                        authorModal.style.display = 'none';
+                    }
+                });
+            }
+
             updateThemesUI();
             updateHistoryUI();
             updateScoreDisplay();
