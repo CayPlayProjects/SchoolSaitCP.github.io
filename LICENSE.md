@@ -1,42 +1,21 @@
-# 📜 Лицензия MIT
+MIT License
 
-> Copyright © 2026 **CayPlay**
+Copyright (c) 2026 CayPlayProjects
 
-Данная лицензия разрешает лицам, получившим копию данного программного обеспечения и сопутствующей документации (далее — «Программное обеспечение»), использовать Программное обеспечение без ограничений, включая неограниченное право на использование, копирование, изменение, слияние, публикацию, распространение, сублицензирование и/или продажу копий Программного обеспечения, а также лицам, которым предоставляется данное Программное обеспечение, при соблюдении следующих условий:
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
----
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-## ⚠️ Условия
-
-Указанное выше уведомление об авторском праве и данные условия должны быть включены во все копии или значимые части Программного обеспечения.
-
----
-
-## 🚫 Отказ от гарантий
-
-**Программное обеспечение предоставляется «как есть»**, без каких-либо гарантий, явных или подразумеваемых, включая, но не ограничиваясь гарантиями товарной пригодности, соответствия определённой цели и отсутствия нарушений прав.
-
-**Ни при каких обстоятельствах** авторы или правообладатели не несут ответственности за любые претензии, убытки или иную ответственность, будь то в результате действия контракта, деликта или иным образом, возникшие из, в связи с или в результате использования Программного обеспечения или иных действий с Программным обеспечением.
-
----
-
-## ✅ Что это значит простыми словами?
-
-| ✅ Можно | ❌ Нельзя |
-|----------|-----------|
-| Использовать в своих проектах | Обвинять автора в ошибках/убытках |
-| Изменять код под себя | Удалять уведомление об авторстве |
-| Распространять бесплатно и платно | Требовать гарантий и поддержки |
-| Встраивать в коммерческие продукты | — |
-
----
-
-## 👤 Автор
-
-**CayPlay**  
-📧 CayPlay78@yandex.ru  
-🌐 [cayplayprojects.github.io/SchoolSaitCP.github.io](https://cayplayprojects.github.io/SchoolSaitCP.github.io/)
-
----
-
-> *Эта лицензия является одной из самых свободных и широко используемых в open-source сообществе. Спасибо, что соблюдаете её условия!* 💙
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
